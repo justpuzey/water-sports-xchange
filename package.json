@@ -1,0 +1,35 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seed": "node seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justpuzey/tech-blog.git"
+  },
+  "author": "Justin Puzey",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.1",
+    "handlebars": "^4.7.3",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.5"
+  },
+  "bugs": {
+    "url": "https://github.com/justpuzey/tech-blog/issues"
+  },
+  "homepage": "https://github.com/justpuzey/tech-blog#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
