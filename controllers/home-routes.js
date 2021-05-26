@@ -7,7 +7,11 @@ router.get('/', (req, res) => {
 
   // Access our model
   Test.findAll()
-    .then(dbUserData => res.json(dbUserData))
+    .then(testData => {
+      const tests = testData.map(test => test.get({ plain: true }));
+
+      res.render('homepage', { tests });
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
