@@ -5,14 +5,7 @@ const router = require('express').Router();
 // const { Post } = require('../../models');
 
 router.get('/', (req, res) => {
-  Post.findAll({
-
-  }).then(dbPostData => {
-    const posts = dbPostData.map((post) => post.get({ plain: true }));
-    console.log(posts)
-    res.render('homepage', { posts });
-  })
-
+  res.send('Welcome')
 });
 
 module.exports = router;
