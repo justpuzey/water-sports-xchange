@@ -1,4 +1,4 @@
-const Post = require('./Post');
+const Test = require('./Test');
 
 
-module.exports = { Post };
+module.exports = { Test };

@@ -1,11 +1,18 @@
-const { Post } = require('../models');
+const { Test } = require('../models');
 
 const router = require('express').Router();
-// const sequelize = require('../../config/connection');
-// const { Post } = require('../../models');
 
 router.get('/', (req, res) => {
-  res.send('Welcome')
+  // res.send('Welcome')
+
+  // Access our model
+  Test.findAll()
+    .then(dbUserData => res.json(dbUserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
 });
 
 module.exports = router;

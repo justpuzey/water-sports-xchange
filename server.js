@@ -26,4 +26,12 @@ sequelize.authenticate().then(() => {
     console.error('unable to connect to db:', err)
   })
 
-app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`));
+});

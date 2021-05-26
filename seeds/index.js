@@ -1,11 +1,11 @@
-const seedPosts = require('./post-seeds');
+const seedTests = require('./test-seeds');
 
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
   console.log('--------------');
-  await seedPosts();
+  await seedTests();
   console.log('--------------');
 
 
