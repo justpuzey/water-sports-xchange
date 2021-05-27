@@ -40,7 +40,16 @@ router.post('/', (req, res) => {
       email: req.body.email,
       password: req.body.password
     })
-      .then(userInfo => res.json(userInfo))
+    //adding session when user logs in
+      .then(userInfo => {
+          req.session.save(() => {
+              req.session.users_id = userInfo.id;
+              req.session.email = userInfo.email;
+              res.session.loggedIn = true;
+
+              res.json(userInfo);
+          })
+      })
       .catch(error => {
         res.status(500).json(error);
       });
@@ -54,7 +63,7 @@ router.post('/login', (req,res) => {
     }).then(userInfo => {
         if(!userInfo)
         {
-            res.status(400).json({ message:'Email address is not registered on our systerm'});
+            res.status(400).json({ message:'Email address is not registered on our system'});
             return;
         }
         const validPw = userInfo.checkPassword(req.body.password)
@@ -62,8 +71,16 @@ router.post('/login', (req,res) => {
         {
             res.status(400).json({ message: 'Password is incorrect.'})
         }
-        res.json({ users: userInfo, message: `You are now logged in.`});
-        //res.json({ user: userInfo });
+        req.session.save(() => {
+            req.session.users_id = userInfo.id;
+            req.session.email = userInfo.email;
+            res.session.loggedIn = true;
+
+            res.json(userInfo);
+        })
+        
+        res.json({ users: userInfo, message: `Login successful.`});
+        
     })
 })
 
