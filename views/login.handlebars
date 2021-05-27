@@ -1,6 +1,13 @@
-<!--this is from mod 14, we need to change this and style it differently-->
-<!--Needed to put this here temporarily to test sessions-->
-<form>
+
+<!--
+-example from module placed here
+-Needed to put this here temporarily to test sessions
+-we should change this for the actual project maybe make it more user friendly 
+ -->
+
+<center>
+  <h3>LOGIN</h3>
+  <form class="login-form">
   <div>
     <label for="email-login">email:</label>
     <input type="text" id="email-login" />
@@ -13,21 +20,81 @@
     <button type="submit">login</button>
   </div>
 </form>
-
-<form>
+  <br><br><br><br>
+<form class="signup-form">
+    <h3>SIGNUP</h3>
   <div>
-    <label for="username-signup">username:</label>
-    <input type="text" id="username-signup" />
-  </div>
-  <div>
-    <label for="email-signup">email:</label>
+    <label for="email-signup">EMAIL:</label>
     <input type="text" id="email-signup" />
   </div>
   <div>
-    <label for="password-signup">password:</label>
+    <label for="password-signup">PASSWORD:</label>
     <input type="password" id="password-signup" />
   </div>
   <div>
-    <button type="submit">signup</button>
+    <button type="submit">CREATE ACCOUNT</button>
   </div>
 </form>
+</center>
+
+
+<script>
+  //JS FOR LOGIN
+  async function loginFormHandler(event) {
+  event.preventDefault();
+
+  const email = document.querySelector('#email-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
+
+  if (email && password) {
+    const response = await fetch('/api/users/login', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+      console.log('login succesful')
+    } else {
+      console.log('login not successful')
+    }
+  }
+}
+
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+
+  //JS FOR SIGN UP
+  async function signupFormHandler(event) {
+    event.preventDefault();
+
+   
+  const email = document.querySelector('#email-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
+
+  if (email && password) {
+
+   const response = await fetch('/api/users', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    //adding signup validation here
+    if(response.ok)
+    {
+      console.log('account created');
+    }
+    else{
+      console.log('account not created')
+    }
+  }
+  
+  }
+  
+  document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+</script>
