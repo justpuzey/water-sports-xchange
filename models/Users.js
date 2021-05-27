@@ -4,7 +4,11 @@ const bcrypt = require('bcrypt');
 
 
 //made for account creation/login information
-class Users extends Model {}
+class Users extends Model {
+  checkPassword(loginAuth){
+    return bcrypt.compareSync(loginAuth, this.password);
+  }
+}
 
 //info for user data 
 Users.init(

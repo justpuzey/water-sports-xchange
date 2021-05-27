@@ -45,6 +45,27 @@ router.post('/', (req, res) => {
         res.status(500).json(error);
       });
   });
+//user login verfication
+router.post('/login', (req,res) => {
+    Users.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(userInfo => {
+        if(!userInfo)
+        {
+            res.status(400).json({ message:'Email address is not registered on our systerm'});
+            return;
+        }
+        const validPw = userInfo.checkPassword(req.body.password)
+        if(!validPw)
+        {
+            res.status(400).json({ message: 'Password is incorrect.'})
+        }
+        res.json({ users: userInfo, message: `You are now logged in.`});
+        //res.json({ user: userInfo });
+    })
+})
 
 
 //user update PUT 
