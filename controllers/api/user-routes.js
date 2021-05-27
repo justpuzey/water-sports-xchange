@@ -4,12 +4,16 @@ const { Users } = require('../../models')
 
 //users api GET 
 router.get('/', (req,res) => {
-    Users.findAll().then(userInfo => res.json(userInfo)).catch(error => {res.status(500).json(error)})
+    Users.findAll({
+        attributes: { exclude: ['password']}
+    }).then(userInfo => res.json(userInfo))
+    .catch(error => {res.status(500).json(error)})
 })
 
 //users api:id (single user info) GET 
 router.get('/:id', (req,res)=>{
     Users.findOne({
+        attributes: { exclude: ['password']},
         where:
         {
             id: req.params.id
@@ -47,6 +51,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req,res) => {
     Users.update(req.body, {
+        individualHooks: true,
         where:
         {
             id: req.params.id

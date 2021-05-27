@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
 
 //made for account creation/login information
@@ -21,9 +22,25 @@ Users.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false
+      //what validations would you like to add for the password?
+      //length or special characters? see sequelize validation in docs 
     }
   },
   {
+    //password protection here with hash(saltRound bcrypt)
+    hooks:
+    {
+      async beforeCreate(newUserInfo)
+      {
+        newUserInfo.password = await bcrypt.hash(newUserInfo.password, 15);
+        return newUserInfo;
+      },
+      async beforeUpdate(updatedUserInfo)
+      {
+        updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 15);
+        return updatedUserInfo;
+      }
+    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
