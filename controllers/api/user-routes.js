@@ -90,24 +90,23 @@ router.put('/:id', (req,res) => {
     })
 })
 
-//are we giving our users the option to delete their account?
-/*
+//if user would like to deactivate their account 
 router.delete('/:id', (req,res) =>{
-    Users.destory({
+    Users.destroy({
         where: {
         id: req.params.id
         }
     }).then(userInfo => {
         if(!userInfo)
         {
-            res.status(404).json({'User does not exist'})
+            res.status(404).json({ message: 'User does not exist'})
         }
-        res.json(userInfo)
+        res.json({message: 'User successfully deleted.'})
     }).catch(error => {
         res.status(500).json(error)
     })
 })
-*/
+
 
 
 module.exports = router;
