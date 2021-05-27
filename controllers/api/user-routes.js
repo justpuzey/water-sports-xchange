@@ -33,23 +33,14 @@ router.get('/:id', (req,res)=>{
 
 
 //new user POST 
-//getting error and cannot post with models created, follow mod13 step by step 
+//getting error and cannot post with models created with sessions, follow mod13 step by step 
 //need to review with team
 router.post('/', (req, res) => {
     Users.create({
       email: req.body.email,
       password: req.body.password
     })
-    //adding session when user logs in
-      .then(userInfo => {
-          req.session.save(() => {
-              req.session.users_id = userInfo.id;
-              req.session.email = userInfo.email;
-              res.session.loggedIn = true;
-
-              res.json(userInfo);
-          })
-      })
+      .then(userInfo => res.json(userInfo))
       .catch(error => {
         res.status(500).json(error);
       });
@@ -63,7 +54,7 @@ router.post('/login', (req,res) => {
     }).then(userInfo => {
         if(!userInfo)
         {
-            res.status(400).json({ message:'Email address is not registered on our system'});
+            res.status(400).json({ message:'Email address is not registered on our systerm'});
             return;
         }
         const validPw = userInfo.checkPassword(req.body.password)
@@ -71,16 +62,8 @@ router.post('/login', (req,res) => {
         {
             res.status(400).json({ message: 'Password is incorrect.'})
         }
-        req.session.save(() => {
-            req.session.users_id = userInfo.id;
-            req.session.email = userInfo.email;
-            res.session.loggedIn = true;
-
-            res.json(userInfo);
-        })
-        
-        res.json({ users: userInfo, message: `Login successful.`});
-        
+        res.json({ users: userInfo, message: `You are now logged in.`});
+        //res.json({ user: userInfo });
     })
 })
 

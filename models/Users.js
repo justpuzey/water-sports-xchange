@@ -36,12 +36,12 @@ Users.init(
     {
       async beforeCreate(newUserInfo)
       {
-        newUserInfo.password = await bcrypt.hash(newUserInfo.password, 15);
+        newUserInfo.password = await bcrypt.hash(newUserInfo.password, 8);
         return newUserInfo;
       },
       async beforeUpdate(updatedUserInfo)
       {
-        updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 15);
+        updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 8);
         return updatedUserInfo;
       }
     },
