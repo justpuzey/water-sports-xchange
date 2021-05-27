@@ -1,9 +1,24 @@
-<ol>
+<!--<ol>
   {{#each tests as |test|}}
   <li>
     <article>
       <div class="title">
         <span>({{test.title}})</span>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ol>-->
+
+<!--Commenting our test to test Sequelize ORM
+This can be removed if need, not necessary for application
+this is a copy of what is above-->
+<ol>
+  {{#each rentItems as |rentItem|}}
+  <li>
+    <article>
+      <div class="rentItems">
+        <span>{{ name }} point: {{ pointval }}</span>
       </div>
     </article>
   </li>
