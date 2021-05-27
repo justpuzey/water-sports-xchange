@@ -1,8 +1,9 @@
 
-
+/*
 const express = require('express');
 const path = require('path');
 const sequelize = require('./config/connection');
+
 
 
 //Initiate app server and port
@@ -11,7 +12,6 @@ const PORT = process.env.PORT || 3001;
 
 //Make files in 'public' folder accessible
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 //Establish Handlebars as template engine
 const exphbs = require('express-handlebars');
@@ -39,3 +39,23 @@ app.use(express.urlencoded({ extended: true }));
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`));
 });
+*/
+
+//commenting out above because there was an error for connection
+//writing new connection below 
+const express = require('express');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(routes);
+
+//connection to db and server
+sequelize.sync({ force: false }).then(() =>{
+  app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`))
+})

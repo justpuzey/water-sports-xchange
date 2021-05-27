@@ -1,5 +1,6 @@
 const { Test } = require('../models');
 
+
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
-    });
+    });  
 
 });
 
