@@ -9,16 +9,23 @@ class Item extends Model {}
 Item.init ({
     //we can perhaps thing of a package to add to make a unique id for each item on the website?
     //would have to be compatible with sequelize
-    item_id: {
+    id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
     },
-    item_name:
+    name:
     {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    pointval:
+    {
+        type: DataTypes.INTEGER,
+        allowNull: false
+        //should we add validation for points value entered here? 
+
     },
     //making reference to user
     users_id: 

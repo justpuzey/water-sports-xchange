@@ -42,7 +42,7 @@ sequelize.sync({ force: false }).then(() => {
 */
 
 //commenting out above because there was an error for connection
-//writing new connection below 
+//writing new connection below, need to change with handlebars later on
 const express = require('express');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -56,6 +56,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 //connection to db and server
-sequelize.sync({ force: false }).then(() =>{
+sequelize.sync({ force: false}).then(() =>{
   app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`))
 })
