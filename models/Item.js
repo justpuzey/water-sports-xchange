@@ -22,7 +22,7 @@ Item.init({
     },
     description:
     {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     img_url:
@@ -44,6 +44,15 @@ Item.init({
         references:
         {
             model: 'users',
+            key: 'id'
+        }
+    },
+    category_id:
+    {
+        type: DataTypes.INTEGER,
+        references:
+        {
+            model: 'item_category',
             key: 'id'
         }
     }

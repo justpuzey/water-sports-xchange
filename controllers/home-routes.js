@@ -21,33 +21,33 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });  */
 
-    //taking out the test model above to test Sequelize ORM
-    router.get('/', (req,res) =>{
-      Item.findAll({
-        attributes: [
-          'id',
-          'name',
-          'pointval'
-        ],
-        include: 
-        [{
-          model: Users,
-          attributes: ['email']
-        }]
-      }).then(userInfo => {
-        //this here renders what the item model will currently have
-        const rentItems = userInfo.map(item=> item.get({ plain: true }))
-        res.render('homepage',  { rentItems })
-      })
-      .catch(error => {
-        res.status(500).json(error);
-      })
+//taking out the test model above to test Sequelize ORM
+router.get('/', (req, res) => {
+  Item.findAll({
+    attributes: [
+      'id',
+      'name',
+      'pointval'
+    ],
+    include:
+      [{
+        model: Users,
+        attributes: ['email']
+      }]
+  }).then(userInfo => {
+    //this here renders what the item model will currently have
+    const rentItems = userInfo.map(item => item.get({ plain: true }))
+    res.render('homepage', { rentItems })
+  })
+    .catch(error => {
+      res.status(500).json(error);
     })
+})
 
-    //LOGIN page renders here
-    router.get('/login', (req,res) => {
-      res.render('login')
-    })
+//LOGIN page renders here
+router.get('/login', (req, res) => {
+  res.render('login')
+})
 
 
 
