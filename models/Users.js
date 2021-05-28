@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 //made for account creation/login information
 class Users extends Model {
-  checkPassword(loginAuth){
+  checkPassword(loginAuth) {
     return bcrypt.compareSync(loginAuth, this.password);
   }
 }
@@ -18,6 +18,14 @@ Users.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
+    },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
@@ -34,13 +42,11 @@ Users.init(
     //password protection here with hash(saltRound bcrypt)
     hooks:
     {
-      async beforeCreate(newUserInfo)
-      {
+      async beforeCreate(newUserInfo) {
         newUserInfo.password = await bcrypt.hash(newUserInfo.password, 8);
         return newUserInfo;
       },
-      async beforeUpdate(updatedUserInfo)
-      {
+      async beforeUpdate(updatedUserInfo) {
         updatedUserInfo.password = await bcrypt.hash(updatedUserInfo.password, 8);
         return updatedUserInfo;
       }

@@ -3,10 +3,10 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Item extends Model {}
+class Item extends Model { }
 
 
-Item.init ({
+Item.init({
     //we can perhaps thing of a package to add to make a unique id for each item on the website?
     //would have to be compatible with sequelize
     id: {
@@ -20,6 +20,16 @@ Item.init ({
         type: DataTypes.STRING,
         allowNull: false
     },
+    description:
+    {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    img_url:
+    {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     pointval:
     {
         type: DataTypes.INTEGER,
@@ -28,22 +38,22 @@ Item.init ({
 
     },
     //making reference to user
-    users_id: 
+    users_id:
     {
-    type: DataTypes.INTEGER,
-    references: 
-    {
-        model: 'users',
-        key: 'id'
-    }
+        type: DataTypes.INTEGER,
+        references:
+        {
+            model: 'users',
+            key: 'id'
+        }
     }
 },
-{
-    sequelize,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'item'
-  }
+    {
+        sequelize,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'item'
+    }
 );
 
 module.exports = Item;
