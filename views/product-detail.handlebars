@@ -4,7 +4,7 @@
 
   <div class="row mb-2">
 
-    {{#each availItems as |item|}}
+    {{#each itemDetails as |item|}}
 
     <div class="col-md-6">
       <div class="card flex-md-row mb-4 box-shadow h-md-250">
@@ -14,7 +14,7 @@
 
           <strong class="d-inline-block mb-2 text-primary">{{item.category_id}}</strong>
           <h3 class="mb-0">
-            <a class="text-dark" href="http://localhost:3001/product-detail/{{item.id}}">{{item.name}}</a>
+            <a class="text-dark" href="#">{{item.name}}</a>
           </h3>
           <div class="mb-1 text-muted">Subtitle</div>
           <p class="card-text mb-auto">
