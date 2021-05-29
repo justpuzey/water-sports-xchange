@@ -1,15 +1,115 @@
+<div class="jumbotron bgimage">
+  <h1 class="display-4">Find The Right Boat</h1>
+  <p class="lead">Select from multiple categories to discover the perfect boat for your next adventure, no matter what
+    budget.</p>
+  <hr class="my-4">
+  <h2>Rent Your Boat</h2>
+  <p>Have a boat that's not being used? Let us connect you with a short-term renter.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+<div>
+  <h2 class="display-4 text-center">Select a Category</h2>
+  <hr class="my-4">
+</div>
+{{!-- Category Cards --}}
+<div class="container">
+  <div class="row mb-2">
 
-<h3>Rental Items</h3>
-<ol>
-  {{#each rentItems as |rentItem|}}
-
-  <li>
-    <article>
-      <div class="rentItems">
-        <span>{{ name }} points: {{ pointval }} user: {{user.email}} </span>
-
+    {{!-- Yacht Card --}}
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-header">
+          Motor Yachts
+        </div>
+        <div class="card img-fluid">
+          <img class="card-img-top"
+            src="http://www.heesenyachts.com/wp-content/uploads/2021/01/19650-Aura-ext-600x340.jpg" alt="Card image"
+            style="width:100%">
+          <div class="card-img-overlay">
+            {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+            {{!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          {{!-- 2 days ago --}}
+        </div>
+        <a href="http://localhost:3001/product-detail/1" class="stretched-link"></a>
       </div>
-    </article>
-  </li>
-  {{/each}}
-</ol>
+    </div>
+
+    {{!-- Skiboat Card --}}
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-header">
+          Ski Boats
+        </div>
+        <div class="card img-fluid">
+          <img class="card-img-top"
+            src="https://www.boatingmag.com/resizer/SSeYjh7z3tlWctTfTPOomU5m8ac=/600x340/smart/arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/4LSTSCMNEVAFNDV2OVDTF6PQ5E.jpg"
+            alt="Card image" style="width:100%">
+          <div class="card-img-overlay">
+            {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+            {{!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          {{!-- 2 days ago --}}
+        </div>
+        <a href="http://localhost:3001/product-detail/2" class="stretched-link"></a>
+      </div>
+    </div>
+
+
+    {{!-- Fishing Boat Card --}}
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-header">
+          Fishing Boats
+        </div>
+        <div class="card img-fluid">
+          <img class="card-img-top" src="https://i.pinimg.com/originals/5a/27/88/5a2788d721dbba78fd477a99e144a4e2.jpg"
+            alt="Card image" style="width:100%">
+          <div class="card-img-overlay">
+            {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+            {{!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          {{!-- 2 days ago --}}
+        </div>
+        <a href="http://localhost:3001/product-detail/3" class="stretched-link"></a>
+      </div>
+    </div>
+
+    {{!-- Personal Watercraft Card --}}
+    <div class="col-md-3">
+      <div class="card text-center">
+        <div class="card-header">
+          Personal Watercraft
+        </div>
+        <div class="card img-fluid">
+          <img class="card-img-top"
+            src="https://www.kontikibeachresort.nl/inc/upload/photos/3976/mobile-retina/cs_JEtski-LEft-1.jpg"
+            alt="Card image" style="width:100%">
+          <div class="card-img-overlay">
+            {{!-- <h5 class="card-title">Special title treatment</h5> --}}
+            {{!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+          </div>
+
+        </div>
+        <div class="card-footer text-muted">
+          {{!-- 2 days ago --}}
+        </div>
+        <a href="http://localhost:3001/product-detail/4" class="stretched-link"></a>
+      </div>
+    </div>
+
+
+  </div>
+</div>
