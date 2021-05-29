@@ -2,6 +2,10 @@ const sequelize = require('../config/connection');
 const { Users, Item } = require('../models')
 
 const router = require('express').Router();
+router.get('/profile', (req, res) => {
+  console.log(req.session);
+  res.render('profile', {User:req.session})
+})
 
 /*
 const { Test } = require('../models');
@@ -24,6 +28,7 @@ router.get('/', (req, res) => {
 //taking out the test model above to test Sequelize ORM
 router.get('/', (req, res) => {
   //set up express session for user 
+  console.log('Hello');
   console.log(req.session)
   Item.findAll({
     attributes: [
@@ -39,8 +44,9 @@ router.get('/', (req, res) => {
   }).then(userInfo => {
     //this here renders what the item model will currently have
     const rentItems = userInfo.map(item => item.get({ plain: true }))
+    console.log(rentItems);
     res.render('homepage', { rentItems })
-  
+
   })
     .catch(error => {
       res.status(500).json(error);
@@ -52,14 +58,12 @@ router.get('/', (req, res) => {
 //LOGIN page renders here
 router.get('/login', (req, res) => {
   //for express sessions again, user sees home page with this command 
-  if(req.session.loggedIn)
-  {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
   res.render('login')
 })
-
 
 
 
