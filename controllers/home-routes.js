@@ -23,6 +23,8 @@ router.get('/', (req, res) => {
 
 //taking out the test model above to test Sequelize ORM
 router.get('/', (req, res) => {
+  //set up express session for user 
+  console.log(req.session)
   Item.findAll({
     attributes: [
       'id',
@@ -46,8 +48,17 @@ router.get('/', (req, res) => {
 
 //LOGIN page renders here
 router.get('/login', (req, res) => {
+  //for express sessions again, user sees home page with this command 
+  if(req.session.loggedIn)
+  {
+    res.redirect('/');
+    return;
+  }
   res.render('login')
 })
+
+
+
 
 
 

@@ -41,8 +41,15 @@ router.post('/', (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password
+    }).then(userInfo => {
+        req.session.save(() => {
+            req.session.users_id = userInfo.users_id
+            req.session.email = userInfo.email,
+            req.session.loggedIn = true;
+
+            res.json(userInfo);
+        })
     })
-      .then(userInfo => res.json(userInfo))
       .catch(error => {
         res.status(500).json(error);
       });
@@ -64,6 +71,13 @@ router.post('/login', (req,res) => {
         {
             res.status(400).json({ message: 'Password is incorrect.'})
         }
+        req.session.save(() => {
+            req.session.users_id = userInfo.users_id
+            req.session.email = userInfo.email,
+            req.session.loggedIn = true;
+
+            res.json(userInfo);
+        })
         res.json({ users: userInfo, message: `You are now logged in.`});
         //res.json({ user: userInfo });
     })
@@ -108,6 +122,11 @@ router.delete('/:id', (req,res) =>{
         res.status(500).json(error)
     })
 })
+
+
+
+
+
 
 
 
