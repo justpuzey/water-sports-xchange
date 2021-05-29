@@ -30,10 +30,10 @@ router.get('/:id', (req, res) => {
       return;
     }
     console.log('found item')
-    // const itemDetails = itemData.map(item => item.get({ plain: true }))
-    res.json(itemData)
-    // console.log(itemDetails)
-    // res.render('product-detail', { itemDetails })
+    const itemDetails = itemData.get({ plain: true })
+    // res.json(itemData)
+    console.log(itemDetails)
+    res.render('product-detail', { itemDetails })
   })
     .catch(error => {
       res.status(500).json(error);

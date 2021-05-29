@@ -1,32 +1,26 @@
 <div class="container">
 
-  <h3>Rental Items</h3>
+  <h3>Product Detail</h3>
 
   <div class="row mb-2">
-
-    {{#each itemDetails as |item|}}
-
     <div class="col-md-6">
       <div class="card flex-md-row mb-4 box-shadow h-md-250">
         <div class="card-body d-flex flex-column align-items-start">
           <img class="card-img-right flex-auto d-none d-md-block" alt="alt text" style="width: 200px; height: 200px;"
-            src="{{item.img_url}}">
+            src="{{itemDetails.img_url}}">
 
-          <strong class="d-inline-block mb-2 text-primary">{{item.category_id}}</strong>
+          <strong class="d-inline-block mb-2 text-primary">{{category_id}}</strong>
           <h3 class="mb-0">
-            <a class="text-dark" href="#">{{item.name}}</a>
+            <a class="text-dark" href="#">{{name}}</a>
           </h3>
           <div class="mb-1 text-muted">Subtitle</div>
           <p class="card-text mb-auto">
-            {{item.description}}
+            {{description}}
           </p>
           <a href="#">Call to Action</a>
         </div>
 
       </div>
     </div>
-
-    {{/each}}
-
   </div>
 </div>

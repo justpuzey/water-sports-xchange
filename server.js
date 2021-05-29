@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "/public")));
 
 //for handlebars
 const exphbs = require('express-handlebars');
