@@ -37,36 +37,51 @@ router.get('/:id', (req,res)=>{
 //need to review with team
 router.post('/', (req, res) => {
     Users.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password
+    }).then(userInfo => {
+        req.session.save(() => {
+            req.session.users_id = userInfo.id
+            req.session.email = userInfo.email,
+            req.session.loggedIn = true;
+
+            res.json(userInfo);
+        })
     })
-      .then(userInfo => res.json(userInfo))
       .catch(error => {
         res.status(500).json(error);
       });
   });
 //user login verfication
-router.post('/login', (req,res) => {
+router.post('/login', (req, res) => {
     Users.findOne({
-        where: {
-            email: req.body.email
-        }
+      where: {
+        email: req.body.email
+      }
     }).then(userInfo => {
-        if(!userInfo)
-        {
-            res.status(400).json({ message:'Email address is not registered on our systerm'});
-            return;
-        }
-        const validPw = userInfo.checkPassword(req.body.password)
-        if(!validPw)
-        {
-            res.status(400).json({ message: 'Password is incorrect.'})
-        }
-        res.json({ users: userInfo, message: `You are now logged in.`});
-        //res.json({ user: userInfo });
-    })
-})
-
+      if (!userInfo) {
+        res.status(400).json({ message: 'No user with that email address!' });
+        return;
+      }
+  
+      const validPw = userInfo.checkPassword(req.body.password);
+  
+      if (!validPw) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      req.session.save(() => {
+        // declare session variables
+        req.session.users_id = userInfo.id;
+        req.session.loggedIn = true;
+  
+        res.json({ user: userInfo, message: 'You are now logged in!' });
+      });
+    });
+  });
 
 //user update PUT 
 
@@ -106,6 +121,22 @@ router.delete('/:id', (req,res) =>{
         res.status(500).json(error)
     })
 })
+
+//logout
+router.post('/logout', (req,res) => {
+        if (req.session.loggedIn) {
+            req.session.destroy(() => {
+              res.status(204).end();
+            });
+          }
+          else {
+            res.status(404).end();
+          }
+    })
+
+
+
+
 
 
 

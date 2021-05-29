@@ -23,6 +23,8 @@ router.get('/', (req, res) => {
 
 //taking out the test model above to test Sequelize ORM
 router.get('/', (req, res) => {
+  //set up express session for user 
+  console.log(req.session)
   Item.findAll({
     attributes: [
       'id',
@@ -38,16 +40,28 @@ router.get('/', (req, res) => {
     //this here renders what the item model will currently have
     const rentItems = userInfo.map(item => item.get({ plain: true }))
     res.render('homepage', { rentItems })
+  
   })
     .catch(error => {
       res.status(500).json(error);
     })
 })
 
+
+
 //LOGIN page renders here
 router.get('/login', (req, res) => {
+  //for express sessions again, user sees home page with this command 
+  if(req.session.loggedIn)
+  {
+    res.redirect('/');
+    return;
+  }
   res.render('login')
 })
+
+
+
 
 
 

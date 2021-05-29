@@ -11,6 +11,8 @@ Users.hasMany(Item, {
 Item.belongsTo(Users, {
     foreignKey: 'users_id'
 });
+
+
 Item.hasMany(Schedule, {
     foreignKey: 'users_id'
 });
@@ -22,4 +24,5 @@ ItemCategory.hasMany(Item, {
 });
 
 //adding connection to Users here
-module.exports = { Test, Users, Item, ItemCategory };
+module.exports = { Test, Users, Item, ItemCategory};
+
