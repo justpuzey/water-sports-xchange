@@ -2,11 +2,16 @@ const { ItemCategory } = require('../models');
 
 const Itemdata = [
   {
-    name: 'Boat',
-
+    name: 'Yacht',
   },
   {
-    name: 'Jetski',
+    name: 'Ski Boat',
+  },
+  {
+    name: 'Fishing Boat',
+  },
+  {
+    name: 'Personal Watercraft',
   }
 ];
 
