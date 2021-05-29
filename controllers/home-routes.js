@@ -40,11 +40,14 @@ router.get('/', (req, res) => {
     //this here renders what the item model will currently have
     const rentItems = userInfo.map(item => item.get({ plain: true }))
     res.render('homepage', { rentItems })
+  
   })
     .catch(error => {
       res.status(500).json(error);
     })
 })
+
+
 
 //LOGIN page renders here
 router.get('/login', (req, res) => {

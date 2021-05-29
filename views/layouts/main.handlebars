@@ -4,10 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Title</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
@@ -16,10 +15,10 @@
       <h1>
         <a href="/">Water Xchange</a>
       </h1>
-      <nav>
-        <a href="/login">LOGIN</a>
-        <button id="logout">LOGOUT</button>
-      </nav>
+     <nav>
+    <a href="/login">login</a>
+    <button id="logout">logout</button>
+    </nav>
     </header>
     <main>
       {{{ body }}}
@@ -28,6 +27,22 @@
 
     </footer>
   </div>
+  <script>
+    async function logout() {
+  const response = await fetch('/api/users/logout', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' }
+  });
+
+  if (response.ok) {
+    document.location.replace('/');
+  } else {
+    alert(response.statusText);
+  }
+}
+
+document.querySelector('#logout').addEventListener('click', logout);
+  </script>
 </body>
 
 </html>
