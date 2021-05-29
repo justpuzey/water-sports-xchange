@@ -37,6 +37,8 @@ router.get('/:id', (req,res)=>{
 //need to review with team
 router.post('/', (req, res) => {
     Users.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password
     })
