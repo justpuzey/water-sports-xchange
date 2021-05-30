@@ -10,35 +10,135 @@
     <div class="row">
         <div class="col-md-12">
             <h2>Add New Product</h2>
-            <form>
+            <form id='NewProducts'>
+
+
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Boat">
+                </div>
+
                 <div class="form-group">
                     <label for="Inventory">Category</label>
                     <select class="form-control" id="Inventory">
+                        <option value=""></option>
                         <option value="1">Yacht</option>
-                        <option value="2">JetSki</option>
+                        <option value="2">Ski Boat</option>
+                        <option value="3">Fishing Boat</option>
+                        <option value="4">Personal Watercraft</option>
                     </select>
-</div>
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Boat">
-                    </div>
-                    <div class="form-group">
-                        <label for="Points">Points</label>
-                        <input type="number" class="form-control" id="Points" placeholder="500">
-                    </div>
-                    <div class="form-group">
-                        <label for="image">Image</label>
-                        <input type="text" class="form-control" id="image"
-                            placeholder="https://psmfirestorm.blob.core.windows.net/crs-images/302861/21069/original.jpg'">
-                    </div>
-                    <div class="form-group">
-                        <label for="Desc">Product Description</label>
-                        <textarea class="form-control" id="Desc" rows="3"></textarea>
-                    </div>
+                </div>
 
-                    <button type="submit">Submit</button>
+                <div class="form-group">
+                    <label for="Make">Make</label>
+                    <input class="form-control" type="text" id="Make" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Model">Model</label>
+                    <input class="form-control" type="text" id="Model" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Year">Year</label>
+                    <input class="form-control" type="number" min="1999" max="2021" id="Year" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Capacity">Capacity</label>
+                    <input class="form-control" type="number" min="1" id="Capacity" />
+                </div>
+
+                <input type="hidden" id="user" value={{User.users_id}} />
+
+                <div class="form-group">
+                    <label for="Money">Rental Price</label>
+                    <input type="number" class="form-control" id="Money" min="1" placeholder="500">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="text" class="form-control" id="image"
+                        placeholder="https://psmfirestorm.blob.core.windows.net/crs-images/302861/21069/original.jpg'">
+                </div>
+                <div class="form-group">
+                    <label for="Desc">Product Description</label>
+                    <textarea class="form-control" id="Desc" rows="3"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
             </form>
         </div>
     </div>
 
-</div>
+    <div class="row">
+        {{#each userItems as |item|}}
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src={{item.img_url }} alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name }} </h5>
+                    <p class="card-text">{{item.description}} </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Year: {{item.year}} </li>
+                    <li class="list-group-item">Make: {{item.make}}</li>
+                    <li class="list-group-item">Model: {{item.model}} </li>
+                    <li class="list-group-item">Capacity: {{item.capacity}} </li>
+                    <li class="list-group-item">Rental Price: {{item.pointval}} </li>
+                    <li class="list-group-item">Category: {{item.item_category.name}} </li>
+                </ul>
+
+
+            </div>
+
+        </div>
+        {{/each}}
+    </div>
+
+    <script>
+        const SubmitNewProduct = async (e) => {
+            e.preventDefault()
+            const FullName = document.querySelector('#name').value
+            const Category = Number(document.querySelector('#Inventory').value)
+            const Make = document.querySelector('#Make').value
+            const Model = document.querySelector('#Model').value
+            const Year = Number(document.querySelector('#Year').value)
+            const Capacity = Number(document.querySelector('#Capacity').value)
+            const UserId = Number(document.querySelector('#user').value)
+            const RentalPrice = Number(document.querySelector('#Money').value)
+            const Image = document.querySelector('#image').value
+            const Description = document.querySelector('#Desc').value
+
+            const response = await fetch('api/items', {
+                method: 'post',
+                body: JSON.stringify({
+                    FullName,
+                    Category,
+                    Make,
+                    Model,
+                    Year,
+                    Capacity,
+                    UserId,
+                    RentalPrice,
+                    Image,
+                    Description
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            if (response.ok) {
+                document.location.replace('/profile')
+            }
+            else {
+                console.log('Product not created :(')
+            }
+
+
+        }
+
+        const form = document.querySelector('#NewProducts')
+        form.addEventListener('submit', SubmitNewProduct)
+
+
+
+
+    </script>
