@@ -59,7 +59,7 @@
                       <input type="password" id="password-login">
                        <br>
                       <button type='submit' class='btn btn-primary'>Login</button>
-                      <button class="btn btn-primary" id="createAcc">Create Account</button>
+                      <a href='/login'>I do not have an account!</a>
                  </form>
                </div>
             </div>
@@ -93,6 +93,7 @@
   
         if (response.ok) {
           document.location.replace('/');
+          alert('logout successful');
   
         } else {
           alert(response.statusText);
@@ -104,7 +105,6 @@
 
     //JS FOR LOGIN MODAL
    var modal = document.getElementById("loginModal");
-   var newModal = document.getElementById("newModal");
    var loginBtn = document.getElementById("login");
    var logoutBtn = document.getElementById("logout");
 
@@ -117,13 +117,6 @@
      span.onclick = function() {
     modal.style.display = "none";
     }
-    //CREATE ACCOUNT 
-    var createAccBtn = document.getElementById('createAcc');
-    createAccBtn.onclick = function()
-    {
-      location.href='/login';
-    }
-  
     //LOGIN FORM HANDLER START 
      async function loginFormHandler(event) 
   {
@@ -144,12 +137,16 @@
         headers: {'Content-Type': 'application/json'}
       })
       if(response.ok){
-        document.location.replace('/')
+        document.location.replace('/profile')
+        alert('Login Successful')
+
 
       }
       else
       {
-        alert(response.statusText);
+        //want to prompt user to create an account here
+        //I need to also think of how to validate the password 
+        document.location.replace('/login')
       }
     }
   }
