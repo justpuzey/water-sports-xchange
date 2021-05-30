@@ -1,3 +1,11 @@
+.logo{
+  font-size: 35px;
+}
+
+.green{
+  color: darkturquoise;
+}
+
 .bgimage {
   width:100%;
   height:400px;
@@ -12,10 +20,7 @@
   text-shadow:2px 2px #333;
 }
 
-.logo{
-  font-size: 35px;
-}
-
-.green{
-  color: darkturquoise;
+#rate{
+  font-size: 20px;
+  color: teal;
 }

@@ -4,7 +4,7 @@ const Itemdata = [
   {
     pointval: 300,
     make: 'Back Cove',
-    model: 'Back Cove 340',
+    model: '340',
     name: 'Back Cove 340',
     year: 2015,
     capacity: 8,
