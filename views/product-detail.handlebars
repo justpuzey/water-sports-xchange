@@ -1,23 +1,51 @@
 <div class="container">
 
-  <h3>Product Detail</h3>
+  <h3 class="mt-3">Product Detail</h3>
+  <hr class="my-4">
 
   <div class="row mb-2">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="card flex-md-row mb-4 box-shadow h-md-250">
-        <div class="card-body d-flex flex-column align-items-start">
-          <img class="card-img-right flex-auto d-none d-md-block" alt="alt text" style="width: 200px; height: 200px;"
-            src="{{itemDetails.img_url}}">
 
-          <strong class="d-inline-block mb-2 text-primary">{{category_id}}</strong>
+        <div class="card-body d-flex flex-column align-items-start">
+          <img class="card-img-right flex-auto d-none d-md-block" alt="alt text" style="width: 700px;"
+            src="{{itemDetails.img_url}}">
+        </div>
+
+        <div class="card-body d-flex flex-column align-items-start">
+          {{!-- <strong class="d-inline-block mb-2 text-primary">{{itemDetails.category_id}}</strong> --}}
+
           <h3 class="mb-0">
-            <a class="text-dark" href="#">{{name}}</a>
+            <a class="text-dark" href="#">{{itemDetails.name}}</a>
           </h3>
-          <div class="mb-1 text-muted">Subtitle</div>
-          <p class="card-text mb-auto">
-            {{description}}
+          <div class="mb-1 text-muted">subtitle</div>
+
+          <p class="font-weight-bold mt-4" id="rate">
+            Weekly rate: ${{itemDetails.pointval}}
           </p>
-          <a href="#">Call to Action</a>
+
+          <h4 class="text-dark">
+            Product Description
+          </h4>
+          <p class="card-text mb-auto ">
+            {{itemDetails.description}}
+          </p>
+
+          <h4 class="text-dark mt-2">
+            Product Information
+          </h4>
+          <ul>
+            <li>Make: {{itemDetails.make}}</li>
+            <li>Model: {{itemDetails.model}}</li>
+            <li>Year: {{itemDetails.year}}</li>
+            <li>Capacity: {{itemDetails.capacity}}</li>
+          </ul>
+
+          <a href="#">
+            <button type="button" class="btn btn-info">
+              Add to Cart
+            </button>
+          </a>
         </div>
 
       </div>

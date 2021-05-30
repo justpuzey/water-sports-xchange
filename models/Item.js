@@ -20,6 +20,26 @@ Item.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    make:
+    {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    model:
+    {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    year:
+    {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    capacity:
+    {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     description:
     {
         type: DataTypes.TEXT,
@@ -34,8 +54,6 @@ Item.init({
     {
         type: DataTypes.INTEGER,
         allowNull: false
-        //should we add validation for points value entered here? 
-
     },
     //making reference to user
     users_id:
