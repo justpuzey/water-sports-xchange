@@ -1,60 +1,21 @@
-
-  <!--SIGNUP FORM START-->
-  <div>
-    <h3>SIGNUP</h3>
-    <form class="signupForm">
-        <label for="first_name">First Name: </label>
-        <input type="text" id="first_name">
-        <br>
-        <label for="last_name">Last Name: </label>
-        <input type="text" id="last_name">
-        <br>
-        <label for="email-signup">Email: </label>
-        <input type="text" id="email-signup">
-        <br>
-        <label for="password-signup">Password: </label>
-        <input type="password" id="password-signup">
-        <br>
-        <button type='submit'>Create Account</button>
-    </form>
-    </div>
-     <!--SIGNUP FORM END-->
+<!--SIGNUP FORM START-->
+<div>
+  <h3>SIGNUP</h3>
+  <form class="signupForm">
+    <label for="first_name">First Name: </label>
+    <input type="text" id="first_name">
+    <br>
+    <label for="last_name">Last Name: </label>
+    <input type="text" id="last_name">
+    <br>
+    <label for="email-signup">Email: </label>
+    <input type="text" id="email-signup">
+    <br>
+    <label for="password-signup">Password: </label>
+    <input type="password" id="password-signup">
+    <br>
+    <button type='submit'>Create Account</button>
+  </form>
 </div>
-
-<!--scripts need to go in separate folder-->
-<script>
-  //SIGN UP SCRIPT START
-  async function signupFormHandler(event) 
-  {
-    event.preventDefault();
-    const first_name = document.querySelector('#first_name').value.trim();
-    const last_name =document.querySelector('#last_name').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-    if(first_name && last_name && email && password)
-    {
-      const response = await fetch('/api/users', {
-        method: 'post',
-        body: JSON.stringify({
-          first_name,
-          last_name,
-          email,
-          password
-        }),
-        headers: {'Content-Type': 'application/json'}
-      })
-      if(response.ok){
-       document.location.replace('/profile')
-      }
-      else
-      {
-        console.log('User account not created :(')
-      }
-    }
-  }
-  document.querySelector('.signupForm').addEventListener('submit', signupFormHandler)
-  //SIGNUP SCRIPT END
-</script>
-
-
- 
+<!--SIGNUP FORM END-->
+</div>
