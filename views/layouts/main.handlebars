@@ -36,15 +36,42 @@
                 <a class="dropdown-item" href="http://localhost:3001/product-list/1">JetSki</a>
               </div>
             </div>
-
           </ul>
 
-          <a href="/login">login</a>
+           <!--Login Pop Up Modal Button-->
+          <button class="btn btn-outline-success my-2 my-sm-0" id="login">login</button>
+
+          <!--Login Modal Added with Bootstrap CSS-->
+          <div class="modal" id="loginModal" tabindex="-1">
+            <div class="modal-dialog">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h3>Login</h3>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body">
+                 <!--LOGIN FORM-->
+                 <form class="loginForm">
+                    <label for="email-login">Email: </label>
+                      <input type="text" id="email-login">
+                      <br>
+                      <label for="password-login">Password: </label>
+                      <input type="password" id="password-login">
+                       <br>
+                      <button type='submit' class='btn btn-primary'>Login</button>
+                      <button class="btn btn-primary" id="createAcc">Create Account</button>
+                 </form>
+               </div>
+            </div>
+            </div>
+          </div>
+          <!--LOGIN MODAL END-->
+       
+          <!--Login Modal End-->
           <button class="btn btn-outline-success my-2 my-sm-0" id="logout">logout</button>
 
         </div>
       </nav>
-
 
     </header>
     <main>
@@ -54,22 +81,82 @@
 
     </footer>
   </div>
-  <script>
-    async function logout() {
-      const response = await fetch('/api/users/logout', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' }
-      });
 
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
+  <!--how can we put scripts in a separate folder?-->
+  <script>
+      //LOGOUT FORM HANDLER START
+    async function logout() {
+        const response = await fetch('/api/users/logout', {
+          method: 'post',
+          headers: { 'Content-Type': 'application/json' }
+        });
+  
+        if (response.ok) {
+          document.location.replace('/');
+  
+        } else {
+          alert(response.statusText);
+        }
+      }
+  
+      document.querySelector('#logout').addEventListener('click', logout);
+      //LOGOUT FORM HANDLER END
+
+    //JS FOR LOGIN MODAL
+   var modal = document.getElementById("loginModal");
+   var newModal = document.getElementById("newModal");
+   var loginBtn = document.getElementById("login");
+   var logoutBtn = document.getElementById("logout");
+
+   var span = document.getElementsByClassName("close")[0];
+
+   loginBtn.onclick = function() {
+     modal.style.display = "block";}
+  
+
+     span.onclick = function() {
+    modal.style.display = "none";
+    }
+    //CREATE ACCOUNT 
+    var createAccBtn = document.getElementById('createAcc');
+    createAccBtn.onclick = function()
+    {
+      location.href='/login';
+    }
+  
+    //LOGIN FORM HANDLER START 
+     async function loginFormHandler(event) 
+  {
+
+    event.preventDefault();
+
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
+
+    if(email && password)
+    {
+      const response = await fetch('/api/users/login', {
+        method: 'post',
+        body: JSON.stringify({
+          email,
+          password
+        }),
+        headers: {'Content-Type': 'application/json'}
+      })
+      if(response.ok){
+        document.location.replace('/')
+
+      }
+      else
+      {
         alert(response.statusText);
       }
     }
+  }
 
-    document.querySelector('#logout').addEventListener('click', logout);
-  </script>
+  document.querySelector('.loginForm').addEventListener('submit', loginFormHandler)
+    //LOGIN FORM HANDLER END
+      </script>
 </body>
 
 </html>

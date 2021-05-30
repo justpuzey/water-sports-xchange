@@ -30,7 +30,6 @@ app.use(routes);
 
 app.use("/css", express.static('public'));
 
-
 //for handlebars
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
