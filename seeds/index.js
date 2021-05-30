@@ -1,12 +1,14 @@
+require('dotenv').config();
 const seedTests = require('./test-seeds');
 const seedUsers = require('./user-seeds');
 const seedItems = require('./item-seeds');
 const seedItemCategory = require('./item-category');
 
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
+
 
 const seedAll = async () => {
-
+console.log(sequelize);
   try {
     await sequelize.sync({ force: true });
     console.log('--------------');
