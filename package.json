@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "start-dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/justpuzey/water-sports-xchange/issues"
   },
-  "homepage": "https://github.com/justpuzey/water-sports-xchange#readme"
+  "homepage": "https://github.com/justpuzey/water-sports-xchange#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }

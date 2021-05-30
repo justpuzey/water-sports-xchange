@@ -13,6 +13,12 @@ if (process.env.JAWSDB_URL) {
     dialect: 'mysql',
     port: 3306
   });
+  // sequelize = new Sequelize('water_xchange_db', 'root', 'Guyana45', {
+  //   host: 'localhost',
+  //   dialect: 'mysql',
+  //   port: 3306
+  // });
 }
+
 
 module.exports = sequelize;

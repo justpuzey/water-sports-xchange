@@ -1,10 +1,28 @@
 const sequelize = require('../config/connection');
-const { Users, Item } = require('../models')
+const { Users, Item, ItemCategory } = require('../models')
 
 const router = require('express').Router();
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
   console.log(req.session);
-  res.render('profile', {User:req.session})
+  //Get All Users Items
+  const response = await Item.findAll({
+    where: {
+      users_id: req.session.users_id
+
+    },
+    include: [
+      {
+        model: ItemCategory
+      }
+    ]
+  })
+
+  const userItems = response.map(item => item.get({ plain: true }))
+  console.log(userItems)
+  res.render('profile', {
+    User: req.session,
+    userItems
+  })
 })
 
 /*
