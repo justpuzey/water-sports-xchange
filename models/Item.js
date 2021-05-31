@@ -47,7 +47,7 @@ Item.init({
     },
     img_url:
     {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING, 
         allowNull: false
     },
     category:
