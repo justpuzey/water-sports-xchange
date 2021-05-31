@@ -50,6 +50,11 @@ Item.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    category:
+    {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     pointval:
     {
         type: DataTypes.INTEGER,
@@ -62,15 +67,6 @@ Item.init({
         references:
         {
             model: 'users',
-            key: 'id'
-        }
-    },
-    category_id:
-    {
-        type: DataTypes.INTEGER,
-        references:
-        {
-            model: 'item_category',
             key: 'id'
         }
     }
