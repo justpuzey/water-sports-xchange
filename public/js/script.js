@@ -101,5 +101,5 @@ async function signupFormHandler(event) {
     }
   }
 }
-document.querySelector('.signupForm').addEventListener('submit', signupFormHandler)
+//document.querySelector('.signupForm').addEventListener('submit', signupFormHandler)
   //SIGNUP SCRIPT END

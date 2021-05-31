@@ -44,30 +44,24 @@ router.get('/:id', (req, res) => {
 //ADD item for rent
 router.post('/', (req, res) => {
     console.log('create new product')
-    try {
+    if(req.session){
         Item.create({
-            name: req.body.FullName,
-            pointval: req.body.RentalPrice,
-            users_id: req.body.UserId,
-            make: req.body.Make,
-            model: req.body.Model,
-            year: req.body.Year,
-            capacity: req.body.Capacity,
-            img_url: req.body.Image,
-            description: req.body.Description,
-            category_id: req.body.Category,
+            name: req.body.name,
+            pointval: req.body.pointval,
+            users_id: req.body.users_id,
+            make: req.body.make,
+            model: req.body.model,
+            year: req.body.year,
+            capacity: req.body.capacity,
+            img_url: req.body.img_url,
+            description: req.body.description,
+            //category_id: req.body.category_id
 
         }).then(userInfo => res.json(userInfo))
             .catch(error => {
                 res.status(500).json(error)
             })
-
-    } catch (error) {
-        console.error(error)
-        res.status(500).json(error)
-
-    }
-
+        }
 })
 
 //UPDATE item pointval(may need to edit this to show item name)

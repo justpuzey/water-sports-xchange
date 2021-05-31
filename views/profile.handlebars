@@ -98,35 +98,35 @@
     <script>
         const SubmitNewProduct = async (e) => {
             e.preventDefault()
-            const FullName = document.querySelector('#name').value
-            const Category = Number(document.querySelector('#Inventory').value)
-            const Make = document.querySelector('#Make').value
-            const Model = document.querySelector('#Model').value
-            const Year = Number(document.querySelector('#Year').value)
-            const Capacity = Number(document.querySelector('#Capacity').value)
-            const UserId = Number(document.querySelector('#user').value)
-            const RentalPrice = Number(document.querySelector('#Money').value)
-            const Image = document.querySelector('#image').value
-            const Description = document.querySelector('#Desc').value
+            const name = document.querySelector('#name').value
+            const category = Number(document.querySelector('#Inventory').value)
+            const make = document.querySelector('#Make').value
+            const model = document.querySelector('#Model').value
+            const year = Number(document.querySelector('#Year').value)
+            const capacity = Number(document.querySelector('#Capacity').value)
+            const users_id = Number(document.querySelector('#user').value)
+            const pointval = Number(document.querySelector('#Money').value)
+            const img_url = document.querySelector('#image').value
+            const description = document.querySelector('#Desc').value
 
             const response = await fetch('api/items', {
                 method: 'post',
                 body: JSON.stringify({
-                    FullName,
-                    Category,
-                    Make,
-                    Model,
-                    Year,
-                    Capacity,
-                    UserId,
-                    RentalPrice,
-                    Image,
-                    Description
+                    name,
+                    //category,
+                    make,
+                    model,
+                    year,
+                    capacity,
+                    users_id,
+                    pointval,
+                   img_url,
+                    description
                 }),
                 headers: { 'Content-Type': 'application/json' }
             })
             if (response.ok) {
-                document.location.replace('/profile')
+                document.location.replace('/api/items')
             }
             else {
                 console.log('Product not created :(')
