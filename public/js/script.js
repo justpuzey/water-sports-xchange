@@ -68,13 +68,6 @@ async function loginFormHandler(event) {
 document.querySelector('.loginForm').addEventListener('submit', loginFormHandler)
 //LOGIN FORM HANDLER END
 
-
-
-
-
-
-
-
 //SIGN UP SCRIPT START
 async function signupFormHandler(event) {
   event.preventDefault();
