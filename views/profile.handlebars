@@ -112,7 +112,7 @@
             const img_url = document.querySelector('#image').value
             const description = document.querySelector('#Desc').value
 
-            const response = await fetch('api/items', {
+            const response = await fetch('/api/items', {
                 method: 'post',
                 body: JSON.stringify({
                     name,
@@ -129,7 +129,7 @@
                 headers: { 'Content-Type': 'application/json' }
             })
             if (response.ok) {
-                document.location.replace('/api/items')
+                document.location.replace('/profile')
             }
             else {
                 console.log('Product not created :(')

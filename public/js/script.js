@@ -19,6 +19,22 @@ async function logout() {
 document.querySelector('#logout').addEventListener('click', logout);
 //LOGOUT FORM HANDLER END
 
+//JS FOR LOGIN MODAL
+var modal = document.getElementById("loginModal");
+var loginBtn = document.getElementById("login");
+var logoutBtn = document.getElementById("logout");
+
+var span = document.getElementsByClassName("close")[0];
+
+loginBtn.onclick = function () {
+  modal.style.display = "block";
+}
+
+
+span.onclick = function () {
+  modal.style.display = "none";
+}
+
 //LOGIN FORM HANDLER START 
 async function loginFormHandler(event) {
 
@@ -81,5 +97,4 @@ async function signupFormHandler(event) {
     }
   }
 }
-//document.querySelector('.signupForm').addEventListener('submit', signupFormHandler)*/
   //SIGNUP SCRIPT END
