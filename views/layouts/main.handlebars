@@ -15,6 +15,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+
   <title>Water Ways</title>
   <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
@@ -39,26 +40,23 @@
               <a class="nav-link" href="/profile">Profile<span class="sr-only">(current)</span></a>
             </li>
             <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Select category
               </button>
               <div class="dropdown-menu test" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="/product-list/">All</a>
-                <a class="dropdown-item" href="/product-list/yachts">Yachts</a>
-                <a class="dropdown-item" href="/product-list/skiboats">Ski Boats</a>
-                <a class="dropdown-item" href="/product-list/fishingboats">Fishing Boats</a>
-                <a class="dropdown-item" href="/product-list/watercraft">Personal Watercraft</a>
+                <a class="dropdown-item" href="/product-list/yacht">Yachts</a>
+                <a class="dropdown-item" href="/product-list/ski boat">Ski Boats</a>
+                <a class="dropdown-item" href="/product-list/fishing boat">Fishing Boats</a>
+                <a class="dropdown-item" href="/product-list/personal watercraft">Personal Watercraft</a>
               </div>
             </div>
 
           </ul>
 
-          <!--Icon for Login-->
-          <!--<button class="btn btn-outline-success my-2 my-sm-0" id="login">login</button>-->
-          <button class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#loginModal" id="login"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-          </svg></button>
+          <!--Login Pop Up Modal Button-->
+          <button class="btn my-2 my-sm-0" id="login">login</button>
 
           <!--Login Modal Added with Bootstrap CSS-->
           
@@ -92,7 +90,13 @@
           
 
           <!--Login Modal End-->
+<<<<<<< HEAD
           <button class="btn btn-outline-success my-2 my-sm-0" id="logout">logout</button>
+=======
+          <button class="btn my-2 my-sm-0" id="logout">logout</button>
+
+        </div>
+>>>>>>> d4bebc349e0c87773b5f224f620591073964b329
       </nav>
 
     </header>
@@ -105,7 +109,7 @@
   </div>
 
 
-
+  <script src="https://checkout.stripe.com/checkout.js" defer></script>
   <script src="/js/script.js"></script>
 </body>
 

@@ -18,13 +18,13 @@ router.get('/', (req, res) => {
 })
 
 
-//filter added items for yacht  
-router.get('/yachts', (req, res) => {
+//filter by category
+router.get('/:cat', (req, res) => {
 
   Item.findAll({
-    where: 
+    where:
     {
-     category: 'yacht'
+      category: req.params.cat
     }
   }).then(itemInfo => {
 
@@ -37,61 +37,5 @@ router.get('/yachts', (req, res) => {
     })
 })
 
-//filter homepage for ski boats 
-router.get('/skiboats', (req, res) => {
-
-  Item.findAll({
-    where: 
-    {
-     category: 'ski boat'
-    }
-  }).then(itemInfo => {
-
-    const availItems = itemInfo.map(item => item.get({ plain: true }))
-    console.log(availItems)
-    res.render('product-list', { availItems })
-  })
-    .catch(error => {
-      res.status(500).json(error);
-    })
-})
-
-//filter homepage for fishing boats 
-router.get('/fishingboats', (req, res) => {
-
-  Item.findAll({
-    where: 
-    {
-     category: 'fishing boat'
-    }
-  }).then(itemInfo => {
-
-    const availItems = itemInfo.map(item => item.get({ plain: true }))
-    console.log(availItems)
-    res.render('product-list', { availItems })
-  })
-    .catch(error => {
-      res.status(500).json(error);
-    })
-})
-
-//filter homepage for personal watercraft
-router.get('/watercraft', (req, res) => {
-
-  Item.findAll({
-    where: 
-    {
-     category: 'personal watercraft'
-    }
-  }).then(itemInfo => {
-
-    const availItems = itemInfo.map(item => item.get({ plain: true }))
-    console.log(availItems)
-    res.render('product-list', { availItems })
-  })
-    .catch(error => {
-      res.status(500).json(error);
-    })
-})
 
 module.exports = router;
