@@ -47,6 +47,11 @@ Item.init({
     },
     img_url:
     {
+        type: DataTypes.STRING, 
+        allowNull: false
+    },
+    category:
+    {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -62,15 +67,6 @@ Item.init({
         references:
         {
             model: 'users',
-            key: 'id'
-        }
-    },
-    category_id:
-    {
-        type: DataTypes.INTEGER,
-        references:
-        {
-            model: 'item_category',
             key: 'id'
         }
     }

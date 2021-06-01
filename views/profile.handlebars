@@ -85,7 +85,7 @@
                     <li class="list-group-item">Model: {{item.model}} </li>
                     <li class="list-group-item">Capacity: {{item.capacity}} </li>
                     <li class="list-group-item">Rental Price: {{item.pointval}} </li>
-                    <li class="list-group-item">Category: {{item.item_category.name}} </li>
+                    <li class="list-group-item">Category: {{item.category}} </li>
                 </ul>
 
 
@@ -98,8 +98,11 @@
     <script>
         const SubmitNewProduct = async (e) => {
             e.preventDefault()
+            //var for inventory item rent list 
+            const inventoryPick = document.getElementById("Inventory");
+
             const name = document.querySelector('#name').value
-            const category = Number(document.querySelector('#Inventory').value)
+            const category = inventoryPick[inventoryPick.selectedIndex].text;
             const make = document.querySelector('#Make').value
             const model = document.querySelector('#Model').value
             const year = Number(document.querySelector('#Year').value)
@@ -113,14 +116,14 @@
                 method: 'post',
                 body: JSON.stringify({
                     name,
-                    //category,
                     make,
                     model,
                     year,
                     capacity,
                     users_id,
                     pointval,
-                   img_url,
+                    category,
+                    img_url,
                     description
                 }),
                 headers: { 'Content-Type': 'application/json' }

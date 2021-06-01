@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const { Item, Users } = require('../../models');
+const { Item, Users} = require('../../models');
 
 
 //DISPLAYS all items for rent
 router.get('/', (req, res) => {
     Item.findAll({
-        attributes: ['id', 'name', 'pointval'],
+        attributes: ['id', 'name', 'pointval', 'make', 'model', 'year', 'capacity', 'category', 'img_url', 'description'],
         include: [
             {
                 model: Users,
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'name', 'pointval'],
+        attributes: ['id', 'name', 'pointval', 'make', 'model', 'year', 'capacity', 'category', 'img_url', 'description'],
         include: [
             {
                 model: Users,
@@ -53,9 +53,9 @@ router.post('/', (req, res) => {
             model: req.body.model,
             year: req.body.year,
             capacity: req.body.capacity,
+            category: req.body.category,
             img_url: req.body.img_url,
-            description: req.body.description,
-            //category_id: req.body.category_id
+            description: req.body.description
 
         }).then(userInfo => res.json(userInfo))
             .catch(error => {
