@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .logo{
   font-size: 35px;
 }
