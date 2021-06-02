@@ -15,7 +15,7 @@
 </div>
 
 <!--Login Modal PopUp-->
-          <div class="modal" id="loginModal" tabindex="-1">
+          <div class="modal fade loginModal" tabindex="-1">
 
           <div class="modal-dialog">
               <div class="modal-content">
@@ -32,7 +32,7 @@
                     <label for="password-login">Password: </label>
                     <input type="password" id="password-login">
                     <br>
-                    <button type='submit' class='btn btn-primary'>Login</button>
+                    <button type='click' class='btn btn-primary' onclick="loginFormHandler(event)">Login</button>
                     <a href='/login'>I do not have an account!</a>
                   </form>
                 </div>
@@ -41,12 +41,12 @@
         </div>
 <!--Login Modal End-->
 <!--Logout Modal PopUp-->
-<div class="modal" id="logoutModal" tabindex="-1">
+<div class="modal" id="logoutValModal" tabindex="-1">
 
           <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                   <button type="button" class="logoutClose" data-dismiss="modal">&times;</button>
+                   <button type="button" class="close" id="logoutClose">&times;</button>
                 </div>
                 <div class="modal-body">
                   <!--LOGIN FORM-->
@@ -56,6 +56,7 @@
             </div>
         </div>
 <!--Logout Modal PopUp End-->
+
 
 
 {{!-- Category Cards --}}

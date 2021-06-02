@@ -1,7 +1,4 @@
 
-
-
-
 //LOGOUT FORM HANDLER START
 
 async function logout() {
@@ -12,44 +9,26 @@ async function logout() {
 
   if (response.ok) {
     document.location.replace('/');
-    //modal will appear here when logged out 
-
-  } else{
-    //if user is not logged in
-    logoutPopup();
-   
   }
+  else
+  {
+    logoutVal();
+  }
+
 }
 
 document.querySelector('#logout').addEventListener('click', logout);
 
 //LOGOUT FORM HANDLER END
 
-//JS FOR LOGIN MODAL
-
-var modal = document.getElementById("loginModal");
-var loginBtn = document.getElementById("login");
-
-var span = document.getElementsByClassName("close")[0];
-
-loginBtn.onclick = function () {
-  modal.style.display = "block";
-}
-
-
-span.onclick = function () {
-  modal.style.display = "none";
-}
-//JS FOR LOGOUT MODAL
-var logoutModal = document.getElementById("logoutModal")
-var logoutBtn = document.getElementById("logout")
-var logoutClose = document.getElementsByClassName("logoutClose")[0];
-logoutBtn.onclick = function()
+function logoutVal()
 {
-  logoutModal.style.display = "block";
-}
-logoutClose.onclick = function () {
- logoutModal.style.display = "none";
+  var logoutValModal = document.getElementById("logoutValModal");
+  var logoutClose = document.getElementById("logoutClose");
+  logoutValModal.style.display = 'block';
+
+  logoutClose.onclick= function(){logoutValModal.style.display="none"};
+
 }
 
 //LOGIN FORM HANDLER START 
@@ -79,8 +58,6 @@ async function loginFormHandler(event) {
     }
   }
 }
-
-document.querySelector('.loginForm').addEventListener('submit', loginFormHandler)
 //LOGIN FORM HANDLER END
 
 //SIGN UP SCRIPT START
