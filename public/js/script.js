@@ -1,6 +1,9 @@
 
 
+
+
 //LOGOUT FORM HANDLER START
+
 async function logout() {
   const response = await fetch('/api/users/logout', {
     method: 'post',
@@ -9,20 +12,23 @@ async function logout() {
 
   if (response.ok) {
     document.location.replace('/');
-    alert('logout successful');
+    //modal will appear here when logged out 
 
-  } else {
-    alert(response.statusText);
+  } else{
+    //if user is not logged in
+    logoutPopup();
+   
   }
 }
 
 document.querySelector('#logout').addEventListener('click', logout);
+
 //LOGOUT FORM HANDLER END
 
 //JS FOR LOGIN MODAL
+
 var modal = document.getElementById("loginModal");
 var loginBtn = document.getElementById("login");
-var logoutBtn = document.getElementById("logout");
 
 var span = document.getElementsByClassName("close")[0];
 
@@ -33,6 +39,17 @@ loginBtn.onclick = function () {
 
 span.onclick = function () {
   modal.style.display = "none";
+}
+//JS FOR LOGOUT MODAL
+var logoutModal = document.getElementById("logoutModal")
+var logoutBtn = document.getElementById("logout")
+var logoutClose = document.getElementsByClassName("logoutClose")[0];
+logoutBtn.onclick = function()
+{
+  logoutModal.style.display = "block";
+}
+logoutClose.onclick = function () {
+ logoutModal.style.display = "none";
 }
 
 //LOGIN FORM HANDLER START 
@@ -53,15 +70,12 @@ async function loginFormHandler(event) {
       headers: { 'Content-Type': 'application/json' }
     })
     if (response.ok) {
-      document.location.replace('/profile')
-      alert('Login Successful')
-
-
+      document.location.replace('/profile');
     }
     else {
       //want to prompt user to create an account here
       //I need to also think of how to validate the password 
-      document.location.replace('/login')
+      document.location.replace('/login');
     }
   }
 }
@@ -98,3 +112,4 @@ async function signupFormHandler(event) {
   }
 }
   //SIGNUP SCRIPT END
+
