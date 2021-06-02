@@ -2,15 +2,25 @@
     <div class="row mb-2">
         <div class="col-md-12">
             <div class="jumbotron">
-                <h1>{{User.email}}</h1>
+                <h1>Hello there {{User.email}}</h1>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <h2>Add New Product</h2>
-            <form id='NewProducts'>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".newProductModal">Add a New Product</button>
+        </div>
+    </div>
+            
+    <!--New Product Modal-->
+    <div class="modal fade newProductModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class='model-header'>
+            <h3>New Product</h3>
+        </div>
+       <form id='NewProducts'>
 
 
                 <div class="form-group">
@@ -65,10 +75,14 @@
                     <textarea class="form-control" id="Desc" rows="3"></textarea>
                 </div>
 
-                <button type="submit">Submit</button>
+               <button type="submit" class='btn btn-primary'>Submit</button>
             </form>
-        </div>
     </div>
+    </div>
+    </div>
+    <!--New Product Modal End-->
+       
+    
 
     <div class="row">
         {{#each userItems as |item|}}
@@ -96,11 +110,11 @@
     </div>
 
     <script>
+
         const SubmitNewProduct = async (e) => {
             e.preventDefault()
             //var for inventory item rent list 
             const inventoryPick = document.getElementById("Inventory");
-
             const name = document.querySelector('#name').value
             const category = inventoryPick[inventoryPick.selectedIndex].text;
             const make = document.querySelector('#Make').value
@@ -111,7 +125,6 @@
             const pointval = Number(document.querySelector('#Money').value)
             const img_url = document.querySelector('#image').value
             const description = document.querySelector('#Desc').value
-
             const response = await fetch('/api/items', {
                 method: 'post',
                 body: JSON.stringify({
@@ -134,14 +147,7 @@
             else {
                 console.log('Product not created :(')
             }
-
-
         }
-
         const form = document.querySelector('#NewProducts')
         form.addEventListener('submit', SubmitNewProduct)
-
-
-
-
     </script>
