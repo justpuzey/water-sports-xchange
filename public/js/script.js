@@ -54,7 +54,7 @@ async function loginFormHandler(event) {
     else {
       //want to prompt user to create an account here
       //I need to also think of how to validate the password 
-      document.location.replace('/login');
+      alert('Please create an account.');
     }
   }
 }
