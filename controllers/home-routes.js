@@ -4,6 +4,11 @@ const { Users, Item, ItemCategory } = require('../models')
 const router = require('express').Router();
 router.get('/profile', async (req, res) => {
   console.log(req.session);
+  // If user is logged out redirect to home page
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
   //Get All Users Items
   const response = await Item.findAll({
     where: {
@@ -72,6 +77,7 @@ router.get('/', (req, res) => {
 })
 
 
+// Was the login page moved to the modal?
 
 //LOGIN page renders here
 router.get('/login', (req, res) => {
