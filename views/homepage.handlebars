@@ -14,6 +14,51 @@
   <hr class="my-4">
 </div>
 
+<!--Login Modal PopUp-->
+          <div class="modal fade loginModal" tabindex="-1">
+
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3>Login</h3>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <!--LOGIN FORM-->
+                  <form class="loginForm">
+                    <label for="email-login">Email: </label>
+                    <input type="text" id="email-login">
+                    <br>
+                    <label for="password-login">Password: </label>
+                    <input type="password" id="password-login">
+                    <br>
+                    <button type='click' class='btn btn-primary' onclick="loginFormHandler(event)">Login</button>
+                    <a href='/login'>I do not have an account!</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+        </div>
+<!--Login Modal End-->
+<!--Logout Modal PopUp-->
+<div class="modal" id="logoutValModal" tabindex="-1">
+
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                   <button type="button" class="close" id="logoutClose">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <!--LOGIN FORM-->
+                  <p>You are not logged in.</p>
+                </div>
+              </div>
+            </div>
+        </div>
+<!--Logout Modal PopUp End-->
+
+
+
 {{!-- Category Cards --}}
 <div class="container">
   <div class="row mb-2">
