@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Item, Users} = require('../../models');
+const { Item, Users } = require('../../models');
 
 
 //DISPLAYS all items for rent
@@ -43,8 +43,8 @@ router.get('/:id', (req, res) => {
 
 //ADD item for rent
 router.post('/', (req, res) => {
-    console.log('create new product')
-    if(req.session){
+    // console.log('create new product')
+    if (req.session) {
         Item.create({
             name: req.body.name,
             pointval: req.body.pointval,
@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
             .catch(error => {
                 res.status(500).json(error)
             })
-        }
+    }
 })
 
 //UPDATE item pointval(may need to edit this to show item name)

@@ -3,7 +3,7 @@ const { Users, Item, ItemCategory } = require('../models')
 
 const router = require('express').Router();
 router.get('/profile', async (req, res) => {
-  console.log(req.session);
+  // console.log(req.session);
   // If user is logged out redirect to home page
   if (!req.session.loggedIn) {
     res.redirect('/');
@@ -23,7 +23,7 @@ router.get('/profile', async (req, res) => {
   })
 
   try {
-    console.log(req.session);
+    // console.log(req.session);
     //Get All Users Items
     const response = await Item.findAll({
       where: {
@@ -36,7 +36,7 @@ router.get('/profile', async (req, res) => {
       ]
     })
     const userItems = response.map(item => item.get({ plain: true }))
-    console.log(userItems)
+    // console.log(userItems)
     res.render('profile', {
       User: req.session,
       userItems
@@ -70,8 +70,8 @@ router.get('/', (req, res) => {
 //taking out the test model above to test Sequelize ORM
 router.get('/', (req, res) => {
   //set up express session for user 
-  console.log('Hello');
-  console.log(req.session)
+  // console.log('Hello');
+  // console.log(req.session)
   Item.findAll({
     attributes: [
       'id',
@@ -86,7 +86,7 @@ router.get('/', (req, res) => {
   }).then(userInfo => {
     //this here renders what the item model will currently have
     const rentItems = userInfo.map(item => item.get({ plain: true }))
-    console.log(rentItems);
+    // console.log(rentItems);
     res.render('homepage', { rentItems })
 
   })

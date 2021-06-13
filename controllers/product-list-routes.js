@@ -29,7 +29,7 @@ router.get('/:cat', (req, res) => {
   }).then(itemInfo => {
 
     const availItems = itemInfo.map(item => item.get({ plain: true }))
-    console.log(availItems)
+    // console.log(availItems)
     res.render('product-list', { availItems })
   })
     .catch(error => {

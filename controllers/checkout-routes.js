@@ -4,7 +4,7 @@ const stripe = require('stripe')('sk_test_51Ix9BkIK69n6NqQMQP17bVlrtDH6vUtsMkdKx
 
 
 router.post('/create-checkout-session', async (req, res) => {
-  console.log('prod-detail', req.body)
+  // console.log('prod-detail', req.body)
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     line_items: [
@@ -20,13 +20,21 @@ router.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:3001',
-    cancel_url: 'http://localhost:3001'
+    success_url: 'http://localhost:3001/checkout/success',
+    cancel_url: 'http://localhost:3001/checkout/cancel'
   });
 
   res.json({ id: session.id });
 });
 
+
+router.get('/success', (req, res) => {
+  res.render('success')
+})
+
+router.get('/cancel', (req, res) => {
+  res.render('cancel')
+})
 // router.get('/checkout', (req, res) => {
 //   res.render('checkout')
 // })
