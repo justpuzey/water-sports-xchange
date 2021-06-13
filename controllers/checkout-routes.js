@@ -20,8 +20,8 @@ router.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'https://waterwaysrentals.herokuapp.com/checkout/success',
-    cancel_url: 'https://waterwaysrentals.herokuapp.com/checkout/cancel'
+    success_url: 'https://waterwaysrentals.herokuapp.com/',
+    cancel_url: 'https://waterwaysrentals.herokuapp.com/'
   });
 
   res.json({ id: session.id });
