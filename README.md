@@ -55,6 +55,10 @@
   The Product Detail Page shows additional information about the item and allows users to select a button to begin checkout process
   ![product detail page](./public/assets/product-detail.png)
   
+   ### Checkout
+   Test Credit Card #: 4242424242424242
+   EXP Date: any date in future
+   CVC: any 3 digit #
 
   ## Contributors
   <p><i>Project Contributors/Authors:</i></p>
