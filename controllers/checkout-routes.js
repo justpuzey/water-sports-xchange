@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-const stripe = require('stripe')('sk_test_51Ix9BkIK69n6NqQMQP17bVlrtDH6vUtsMkdKxY5f0uYVU8g4e3F091ulIjTEKtkmdBnZUsnQorPH7dOBOQzEORZa00qSBzB3Pj'); // Add your Secret Key Here
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Add your Secret Key Here
 
 
 router.post('/create-checkout-session', async (req, res) => {
@@ -20,8 +20,8 @@ router.post('/create-checkout-session', async (req, res) => {
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:3001/checkout/success',
-    cancel_url: 'http://localhost:3001/checkout/cancel'
+    success_url: 'https://waterwaysrentals.herokuapp.com/checkout/success',
+    cancel_url: 'https://waterwaysrentals.herokuapp.com/checkout/cancel'
   });
 
   res.json({ id: session.id });
