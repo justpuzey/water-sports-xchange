@@ -3,6 +3,10 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const session = require('express-session');
 
+// -- Stripe ---
+//const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 
@@ -41,7 +45,7 @@ app.set('view engine', 'handlebars');
 
 
 //connection to db and server
-sequelize.sync({ force: false}).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on port: ${PORT}...`))
 })
 

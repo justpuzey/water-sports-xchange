@@ -13,7 +13,6 @@ async function logout() {
   else {
     logoutVal();
   }
-
 }
 
 document.querySelector('#logout').addEventListener('click', logout);
@@ -37,6 +36,7 @@ async function loginFormHandler(event) {
   const email = document.querySelector('#email-login').value.trim();
   const password = document.querySelector('#password-login').value.trim();
 
+
   if (email && password) {
     const response = await fetch('/api/users/login', {
       method: 'post',
@@ -50,9 +50,7 @@ async function loginFormHandler(event) {
       document.location.replace('/profile');
     }
     else {
-      //want to prompt user to create an account here
-      //I need to also think of how to validate the password 
-      document.location.replace('/login');
+      alert('Please create an account.');
     }
   }
 }
@@ -88,4 +86,3 @@ async function signupFormHandler(event) {
   }
 }
   //SIGNUP SCRIPT END
-

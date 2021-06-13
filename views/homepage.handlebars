@@ -15,26 +15,46 @@
 </div>
 
 <!--Login Modal PopUp-->
-          <div class="modal fade loginModal" tabindex="-1">
+        <div class="modal fade loginModal" tabindex="-1">
 
-          <div class="modal-dialog">
+          <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <div class="modal-header">
-                  <h3>Login</h3>
+                <div class="modal-header container">
+                  <div class="col"><h3>Login</h3></div>
+                  <div class="col"><h3>Sign Up</h3></div>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                   <!--LOGIN FORM-->
+                <div class="container">
+                  <div class="row">
+                  <div class="col-6">
                   <form class="loginForm">
-                    <label for="email-login">Email: </label>
-                    <input type="text" id="email-login">
-                    <br>
-                    <label for="password-login">Password: </label>
-                    <input type="password" id="password-login">
-                    <br>
+                      <label for="email-login">Email:</label><input type="text" id="email-login"><br>
+                      <label for="password-login">Password:</label><input type="password" id="password-login"><br>
                     <button type='click' class='btn btn-primary' onclick="loginFormHandler(event)">Login</button>
-                    <a href='/login'>I do not have an account!</a>
                   </form>
+                  </div>
+                  <!--SIGNUP FORM-->
+                  <div class="col-6">
+                    <form class="signupForm">
+                    <label for="first_name">First Name: </label>
+                    <input type="text" id="first_name">
+                    <br>
+                    <label for="last_name">Last Name: </label>
+                    <input type="text" id="last_name">
+                    <br>
+                    <label for="email-signup">Email: </label>
+                    <input type="text" id="email-signup">
+                    <br>
+                    <label for="password-signup">Password: </label>
+                    <input type="password" id="password-signup">
+                    <br>
+                    <button class="btn btn-primary" type='button' onclick="signupFormHandler(event)">Create Account</button>
+                    </form>
+                  </div>
+                  </div>
+                </div>
                 </div>
               </div>
             </div>

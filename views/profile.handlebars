@@ -21,7 +21,8 @@
                 <div class='model-header'>
                     <h3>New Product</h3>
                 </div>
-                <form id='NewProducts'>
+
+                <form id='NewProducts' class="p-4">
 
 
                     <div class="form-group">
@@ -83,12 +84,10 @@
     </div>
     <!--New Product Modal End-->
 
-
-
     <div class="row">
         {{#each userItems as |item|}}
         <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card" id={{item.id}} style="width: 18rem;">
                 <img class="card-img-top" src={{item.img_url }} alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{item.name }} </h5>
@@ -102,7 +101,8 @@
                     <li class="list-group-item">Rental Price: {{item.pointval}} </li>
                     <li class="list-group-item">Category: {{item.category}} </li>
                 </ul>
-
+                <button type="button" class="btn btn-warning edit">Edit</button>
+                <button type="button" class="btn btn-danger delete">Delete</button>
 
             </div>
 
@@ -151,4 +151,29 @@
         }
         const form = document.querySelector('#NewProducts')
         form.addEventListener('submit', SubmitNewProduct)
+
+        const allDeleteBtns = document.querySelectorAll('.delete')
+        const allEdits = document.querySelectorAll('.edit')
+
+        for (let i = 0; i < allDeleteBtns.length; i++) {
+            allDeleteBtns[i].addEventListener('click', Btndelete)
+
+        }
+
+        async function Btndelete(event) {
+            const ProductId = Number(event.target.parentNode.id)
+            console.log(ProductId)
+            const response = await fetch("/api/items/" + ProductId, {
+                method: "delete"
+            })
+            if (response.ok) {
+                document.location.replace('/profile')
+            }
+            else {
+                console.log('Product not deleted :(')
+            }
+        }
+
+
+
     </script>
