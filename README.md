@@ -43,16 +43,16 @@
   ## Usage
   <p><i>Instructions for application usage including examples:</i></p>
 
-  Home Page
-
+  ### Home Page
+  From the home page, users can login, or select a category to browse available product
   ![home page](./public/assets/home.png)
 
-  Product List Page
-
+  ### Product List Page
+  The product list page allows users to view current product by category, or select All in the nav to view all available product. Users can select product to view more information
   ![product list page](./public/assets/product-list.png)
 
-  Product Detail Page
-
+  ### Product Detail Page
+  The Product Detail Page shows additional information about the item and allows users to select a button to begin checkout process
   ![product detail page](./public/assets/product-detail.png)
   
 
